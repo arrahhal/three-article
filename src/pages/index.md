@@ -1,3 +1,14 @@
+---
+layout: ../layouts/BaseLayout.astro
+title: Three.js Arabic tutorial
+author: arrahhal
+description: "An Intro to Three.js in Arabic"
+image:
+    url: ""
+    alt: ""
+pubDate: 2022-07-15
+---
+
 # دراسة عن مكتبة `Three.js`
 
 ## إعداد وإشراف البحث
@@ -342,7 +353,3 @@ https://discourse.threejs.org/t/new-three-js-developer-tool/42384
 
 بهذا يكون ختام بحثنا عن المكتبة، وقد تعرضنا لجوانب مختلفة مما يهم المبرمجين المبتدئين في البرمجة ثلاثية الأبعاد، ولأن مكتبة `Three.js` تجلب قوة توفر الويب من جهة وقوة اللغة المبنية عليها ومكتباتها فإن ما نفذناه ما هو إلى باب لعالم الويب ثلاثي الأبعاد الواسع وما فيه من تطبيقات لا حصر لها في هذا المجال.
 
-
----
-الكود كامًلا: https://github.com/arrahhal/paddles-table
-ملف البحث: https://drive.google.com/file/d/1ytbJoZVYVTq4iTk1tkYcN5xuPxxn8IPL/view?usp=sharing
