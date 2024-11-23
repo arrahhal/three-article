@@ -1,5 +1,7 @@
 ---
 import "../styles/global.css";
+import TOC from "../components/TOC.astro";
+const {headings} = Astro.props;
 ---
 
 <html lang="en">
@@ -11,6 +13,9 @@ import "../styles/global.css";
 		<title>حلقة بحث الرسم والحاسب - Three.js</title>
 	</head>
 	<body>
+    <head>
+      <TOC headings={headings} />
+    </head>
     <slot />
     <footer>
       <nav>
