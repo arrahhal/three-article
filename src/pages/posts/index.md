@@ -120,8 +120,16 @@ scene.add(plane);
 
 ![](../../images/screenshot_2024_11_06_07_45_51.webp)
 
-### إضافة ضوء وتعديل موضع الكميرا
-نضيف ضوءا من نوع `ambientLight` ليجعل كل العناصر مضائة بدون استثناء، كما نسحب الكميرا إلى الخلف والأعلى لنحصل على لقطة أفضل للمشهد.
+### الأضواء
+
+توفر `Three.js` أنوعا عدة من الأضواء ولكل منها سلوك مختلف
+
+- `ambientLight`: يؤثر على كل الأغراض بدرجة واحدة وليس له اتجاه لذا فهو لا ينشئ عنه ظلال.
+- `spotLight`: نقطة تنشر الضوء في اتجاه معين، وتزيد المساحة التي يغطيها بزدياد البعد عن تلك النقطة. بإمكان هذا النوع من الضوء إنشاء الظلال.
+- `directionalLight`: يشبه ضوء النهار، من حيث الاتجاه المحدد للأشعة ومن حيث أن الشمس على بعد غير نهائي من الأرض.  بإمكان هذا النوع من الضوء إنشاء الظلال أيضًا.
+
+### إضافة ضوء وتعديل موضع الكاميرا
+نضيف ضوءا من نوع `ambientLight` حتى يظهر الشكل على الكاميرا، كما نسحب الكميرا إلى الخلف والأعلى لنحصل على لقطة أفضل للمشهد.
 ```javascript
 camera.position.set(0, 8, 25);
 const ambientLight = new THREE.ambientLight();
@@ -183,12 +191,9 @@ plane.material.color.set(options.planeColor);
 gui.addColor(options, "planeColor").onChange(e => plane.material.color.set(e));
 ```
 
-### الأضواء
-توفر `Three.js` أنوعا عدة من الأضواء ولكل منها سلوك مختلف
-- `ambientLight`: الضوء
-- `spotLight`
-- `directionalLight`
-نضيف ضوء من نوع spot أعلى  الطاولة بإضافة ما يلي:
+### إضافة مساعدات لإظهار أماكن والمساحات التي تشغلها بعض الأغراض
+
+بعض الأغراض (لا سيما غير المرئية) صعب تحديد مكانها والمساحة التي تغطيها بدون خطوط مساعدة (مثل الأضواء)، وهناك العديد من الأنواع لهذه المساعدة وكل منها يستخدم مع الغرض الذي يقابله، سنذكر مساعد الـ `SpotLight` مثالًا:
 ```javascript
 const spotLight = new THREE.SpotLight(0xffffff, 100);
 spotLight.position.set(0, 10, 0);
@@ -196,12 +201,7 @@ spotLight.castShadow = true;
 scene.add(spotLight);
 
 scene.add(spotLight);
-```
 
-### إضافة مساعدات لإظهار أماكن والمساحات التي تشغلها بعض الأغراض
-
-بعض الأغراض (لا سيما غير المرئية) صعب تحديد مكانها والمساحة التي تغطيها بدون خطوط مساعدة (مثل الأضواء)، وهناك العديد من الأنواع لهذه المساعدة وكل منها يستخدم مع الغرض الذي يقابله، سنذكر مساعد الـ `SpotLight` مثالًا:
-```javascript
 const sLightHelper = new THREE.SpotLightHelper(spotLight);
 scene.add(sLightHelper);
 
@@ -213,7 +213,7 @@ sLightHelper.visible = options.enableHelpers;
 
 ![](../../images/screenshot_2024_11_06_08_12_15.webp)
 
-### نضيف الدوال تحريك الكرة والمضارب:
+### نضيف إجرائيات تحريك الكرة والمضارب:
 
 دالة الـ `animate` ستدعي هذه الدوال بشكل دوري، وهذه الدوال هي التي تتحكم بحركة الكرة والمضارب، هنا قسم من الكود يوضح عمل الـ`ballLogic funciton`:
 ```javascript
@@ -353,10 +353,6 @@ playerBox.setFromCenterAndSize(
 );
 // now we can check collisions using `playerBox.intersectsBox` method
 ```
-
-
-
-![](/screenshot_2024_11_06_22_08_09)
 
 ## بعض الصعوبات التي رافقت تجربتنا للمكتبة
 
